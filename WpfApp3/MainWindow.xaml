@@ -1,0 +1,84 @@
+﻿<Window x:Class="DeliveryOptimizer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="DeliveryOptimizer" Height="700" Width="1000"
+        Background="#FF1E1E1E" Foreground="White">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок сценариев -->
+        <Border Grid.Column="0" Grid.Row="0" Background="#FF252526" BorderBrush="#FF3E3E40" BorderThickness="0,0,1,0" Padding="10">
+            <TextBlock Text="Сценарии доставки" Foreground="#FFCA5100" FontWeight="Bold" FontSize="14"/>
+        </Border>
+
+        <!-- Панель сценариев -->
+        <ScrollViewer Grid.Column="0" Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <Button x:Name="OptionOne" Content="Центр города" Click="OptionOneTrigger" 
+                        Margin="10,5" Padding="10,5"
+                        Background="#FFCA5100" BorderBrush="#FFE39400" Foreground="Black"
+                        FontWeight="Bold" ToolTip="Заказы в центре города"/>
+
+                <Button x:Name="OptionTwo" Content="Окраины" Click="OptionTwoTrigger" 
+                        Margin="10,5" Padding="10,5"
+                        Background="#FFCA5100" BorderBrush="#FFE39400" Foreground="Black"
+                        FontWeight="Bold" ToolTip="Заказы на окраинах"/>
+
+                <Button x:Name="OptionThree" Content="Один район" Click="OptionThreeTrigger" 
+                        Margin="10,5" Padding="10,5"
+                        Background="#FFCA5100" BorderBrush="#FFE39400" Foreground="Black"
+                        FontWeight="Bold" ToolTip="Все заказы в одном районе"/>
+
+                <Button x:Name="OptionFour" Content="Разные районы" Click="OptionFourTrigger" 
+                        Margin="10,5" Padding="10,5"
+                        Background="#FFCA5100" BorderBrush="#FFE39400" Foreground="Black"
+                        FontWeight="Bold" ToolTip="Заказы в разных районах"/>
+
+                <Button x:Name="OptionFive" Content="Разные приоритеты" Click="OptionFiveTrigger" 
+                        Margin="10,5" Padding="10,5"
+                        Background="#FFCA5100" BorderBrush="#FFE39400" Foreground="Black"
+                        FontWeight="Bold" ToolTip="Заказы с разными приоритетами"/>
+
+                <Button x:Name="OptionSix" Content="Много заказов" Click="OptionSixTrigger" 
+                        Margin="10,5" Padding="10,5"
+                        Background="#FFCA5100" BorderBrush="#FFE39400" Foreground="Black"
+                        FontWeight="Bold" ToolTip="Большое количество заказов"/>
+
+                <Separator Margin="10" Background="#FF3E3E40"/>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Список заказов -->
+        <Border Grid.Column="0" Grid.Row="2" Background="#FF252526" BorderBrush="#FF3E3E40" BorderThickness="0,1,1,0" Padding="5">
+            <DockPanel>
+                <TextBlock Text="Список заказов:" DockPanel.Dock="Top" Foreground="#FFCA5100" Margin="0,0,0,5"/>
+                <ListBox x:Name="ParcelList" Background="#FF2D2D30" Foreground="White" BorderBrush="#FF3E3E40"
+                         ScrollViewer.VerticalScrollBarVisibility="Auto" Height="150"/>
+            </DockPanel>
+        </Border>
+
+        <!-- Карта маршрута -->
+        <Canvas x:Name="RouteCanvas" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" 
+                Background="#FF2D2D30" MouseLeftButtonDown="RouteCanvas_MouseLeftButtonDown">
+            <Canvas.Effect>
+                <DropShadowEffect Color="Black" Direction="320" ShadowDepth="5" Opacity="0.5"/>
+            </Canvas.Effect>
+        </Canvas>
+
+        <!-- Информация о маршруте -->
+        <Border Grid.Column="1" Grid.Row="2" Background="#FF252526" BorderBrush="#FF3E3E40" BorderThickness="0,1,0,0" Padding="10">
+            <StackPanel>
+                <TextBlock x:Name="DistanceInfo" Foreground="#FFCA5100" FontWeight="Bold" Margin="0,0,0,5"/>
+                <TextBlock x:Name="RouteSequence" Foreground="#FFCA5100" FontWeight="SemiBold" TextWrapping="Wrap"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
