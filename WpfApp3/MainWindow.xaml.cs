@@ -33,6 +33,7 @@ namespace DeliveryOptimizer
             deliveryOrder = CreateOptimizedRoute(activeParcels, hubLocation);
             RefreshParcelList();
             UpdateRouteInfo();
+
         }
 
         private void RefreshParcelList()
